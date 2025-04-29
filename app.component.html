@@ -1,0 +1,20 @@
+<div class="container">
+    <h1>Student Manager</h1>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <input formControlName="name" placeholder="Student Name" required />
+      <input formControlName="email" placeholder="Email" required />
+      <input type="number" formControlName="marks" placeholder="Marks" required />
+      <button type="submit">{{ editingId ? 'Update' : 'Add' }}</button>
+    </form>
+  
+    <div class="student-list">
+      <div *ngFor="let student of students" class="student-card">
+        <h3>{{ student.name }}</h3>
+        <p>{{ student.email }}</p>
+        <p>Marks: {{ student.marks }}</p>
+        <button (click)="edit(student)">Edit</button>
+        <button (click)="delete(student._id)">Delete</button>
+      </div>
+    </div>
+  </div>
+  
